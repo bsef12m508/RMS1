@@ -79,6 +79,7 @@
         var d = document.getElementById("da").value;
         var e = document.getElementById("tim").value;
         $.getJSON('/Admin/add_train?title=' + a + '&source=' + b + '&destination=' + c + '&date=' + d + '&time=' + e, function (data) {
+            $('#btn').empty();
             $('#result').append("Train has been added successfully. <br/> Now add classes against the train.");
         });
     }
@@ -127,12 +128,12 @@
                     </div>
                 </div>
 
-                <div class="control-group">
-                    <div class="controls">
-                        &nbsp;&nbsp;&nbsp;&nbsp;<br />
-                        <button class="btn btn-success" onclick="addtrain();">Add Train</button>
-                    </div>
+            <div class="control-group" id="btn">
+                <div class="controls">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<br />
+                    <button class="btn btn-success" onclick="addtrain();">Add Train</button>
                 </div>
+            </div>
             <br/>
             <div id="result"></div>
             <br/>

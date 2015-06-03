@@ -26,8 +26,8 @@
                 <td>@obj.source</td>
                 <td>@obj.date</td>
                 <td>@obj.time</td>
-                <td><button type="submit" class="btn-btn default" onclick="self.location='/Home/SeeFares/@obj.id'">Fares</button></td>
-                <td><button type="submit" class="btn-btn default" onclick="return checkLimit(@obj.id);">Ticket</button></td>
+                <td><button type="submit" class="btn btn-primary" onclick="self.location='/Home/SeeFares/@obj.id'">Fares</button></td>
+                <td><button type="submit" class="btn btn-success" onclick="return checkLimit(@obj.id);">Ticket</button></td>
             </tr>
         }
     </tbody>
