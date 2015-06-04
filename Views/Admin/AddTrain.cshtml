@@ -29,11 +29,21 @@
         else
         {
             cla = 1;
-            var a = document.getElementById("ctitle").value;
-            var b = document.getElementById("seats").value;
-            var c = document.getElementById("price").value;
+
+
+            var a = document.getElementById("ctitle");
+            var b = document.getElementById("seats");
+            var c = document.getElementById("price");
             
-            $.getJSON('/Admin/add_class?title=' + a + '&seats=' + b + '&price=' + c, function (data) {
+            var a1 = a.value;
+            var b1 = b.value;
+            var c1 = c.value;
+            
+            a1.value = "";
+            b1.value = "";
+            c1.value = "";
+
+            $.getJSON('/Admin/add_class?title=' + a1 + '&seats=' + b1 + '&price=' + c1, function (data) {
                 $('#added').append("==> " + a + " has been added successfully.<br/>");
             }
             );

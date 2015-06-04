@@ -3,7 +3,6 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>ViewMsgs</h2>
 
 @model IEnumerable<RMS.Models.msg>
 
@@ -31,7 +30,7 @@
                             <td>@obj.email</td>
                             <td>@obj.phno</td>
                             <td><button class="btn btn-primary" onclick="self.location = '/Admin/MsgDetail/@obj.id'">Details</button></td>
-                            <td><button class="btn btn-danger" onclick="self.location = '/Admin/MsgDelete/@obj.id'">Delete</button></td>
+                            <td><button class="btn btn-danger" onclick=fun(@obj.id)>Delete</button></td>
                         </tr>
                     }
                 </tbody>
@@ -45,3 +44,14 @@
         <h1 style="margin-left:30%">----All Messages---</h1>
     </div>
 }
+
+<script>
+    function fun(a)
+    {
+        var b = confirm("Are you sure to delete the message?");
+        if(b==true)
+        {
+            self.location = "/Admin/MsgDelete/" + a;
+        }
+    }
+</script>
