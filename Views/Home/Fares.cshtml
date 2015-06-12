@@ -1,0 +1,36 @@
+﻿
+@model RMS.Models.train
+<h2>Fares</h2>
+<div class="container" style="margin-top:50px; width:40%; background-color:white; padding-right:15px">
+    <div class=" row">
+        <div class="col-md-12">
+            <form class="form-horizontal" action="SeeFares" method="POST">
+                <fieldset>
+
+                    <div id="legen">
+                        <legen class=""><h2>Search: </h2></legen>
+                        <p class="help-block">Search train by id.</p>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="Name">Enter Id:</label>
+                        <div class="controls">
+                            <input type="text" id="id" name="id" placeholder="Train Id" class="form-control input-lg" required>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="control-group">
+                        <!-- Button -->
+                        <div class="controls">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                    <br /><br />
+                </fieldset>
+            </form>
+
+        </div>
+    </div>
+</div>

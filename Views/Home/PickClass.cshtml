@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "PickClass";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PickClass</h2>
+
+
+<div style="background-color:white; width:400px; margin-top:40px" class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Classes </h1>
+
+            @foreach (var obj in Model)
+            {
+                <div class="control-group">
+                    <div class="controls" >
+                        <button style="margin-left:120px; width:100px; height:40px" onClick="self.location= '/Home/PickSeat/@obj.id' " class="btn btn-success">@obj.title</button>
+                    </div>
+                </div>
+                <br /><br />
+            }
+            </div>
+
+            </div>
+        </div>

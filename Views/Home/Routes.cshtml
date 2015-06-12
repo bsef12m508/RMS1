@@ -1,0 +1,89 @@
+﻿@model IEnumerable<RMS.Models.train>
+<div style="background-color:white; margin-top:40px" class="container">
+
+    <div class="control-group">
+        <h1 style="padding-right:30px;">Trains: </h1>
+        
+        <div class="control-group">
+            <label>Source/From: &nbsp</label>
+            <select id="c1" style="width:100px">
+                <option>city</option>
+                @foreach (var a in ViewBag.list)
+                {
+                    <option value=@a>@a</option>
+                }
+            </select>
+            </div>
+        <br/>
+        <div class="control-group">
+            <label>Destination/To: &nbsp</label>
+            <select id="c2" style="width:100px">
+                <option>city</option>
+                @foreach (var a in ViewBag.list)
+                {
+                    <option value=@a>@a</option>
+                }
+            </select>
+        </div>
+        <br/>
+        </div>
+    
+    
+    <table id="traintable"class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Train Name</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Fares</th>
+                <th>Booking</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>@obj.id</td>
+                    <td>@obj.title</td>
+                    <td>@obj.destination</td>
+                    <td>@obj.source</td>
+                    <td>@obj.date</td>
+                    <td>@obj.time</td>
+                    <td><button type="submit" class="btn-btn default" onclick="self.location='/Home/SeeFares/@obj.id'">Fares</button></td>
+                    <td><button type="submit" class="btn-btn default" onClick="return checkLimit(@obj.id);">Ticket</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div id="me"></div>
+<script>
+    function checkLimit(a)
+    {
+        var b=@Convert.ToInt32(Session["limit"]);
+        if (b<10)
+        {
+            self.location = '/Home/PickClass/' + a;
+        }
+           
+        else
+        {
+            alert("Tickets limit reached.");
+            return false;
+        }
+           
+    }
+</script>
+
+<script>
+    $('#c2').change(function()
+    {
+        var a= $('#c1').val();
+        var b= $('#c2').val();
+        $('#traintable').empty();
+        $('#traintable').load('/Home/FilterTrains?city1='+b+'&city2='+a);
+    });
+</script>

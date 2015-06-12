@@ -1,0 +1,101 @@
+﻿@model RMS.Models.user
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<div class="container" style="margin-top:50px; width:40%; background-color:white; padding-right:15px">
+    <div class=" row">
+    <div class="col-md-12">
+
+                <div id="legen">
+                    <legen class=""><h2>SignUp</h2></legen>
+                </div>
+
+        <form action="sign_up" method="post">
+            @Html.ValidationSummary(true)
+            @Html.EditorFor(x=>x.username)
+            @Html.ValidationMessageFor(x=>x.username)
+            @Html.EditorFor(x=>x.password)
+            @Html.ValidationMessageFor(x => x.password)
+            @Html.EditorFor(x => x.email)
+            @Html.ValidationMessageFor(x => x.email)
+            @Html.EditorFor(x => x.account_no)
+            @Html.ValidationMessageFor(x => x.account_no)
+            <input type="submit" />
+
+            @*<div class="control-group">
+                <label class="control-label" for="username">Username</label>
+                <div class="controls">
+                    <input type="text" id="username" name="username" placeholder="" class="form-control input-lg" required>
+                    <div class="help-block" id="available">Enter username</div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="email">E-mail</label>
+                <div class="controls">
+                    <input type="email" id="email" name="email" placeholder="Email" class="form-control input-lg" required>
+                    <p class="help-block">Please provide your E-mail</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="password">Password</label>
+                <div class="controls">*@
+                    @*@Html.TextBoxFor(m=>m.password)
+                    @Html.ValidationMessageFor()*@
+                    @*<input type="password" id="password" name="password" placeholder="" class="form-control input-lg" required>
+                    <p class="help-block">Password should be at least 6 characters</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="password_confirm">Password (Confirm)</label>
+                <div class="controls">
+                    <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="form-control input-lg" required>
+                    <p class="help-block">Please confirm password</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="account_no">Account no</label>
+                <div class="controls">
+                    <input type="text" id="account_no" name="account_no" placeholder="" class="form-control input-lg" required>
+                </div>
+            </div>
+
+            <br />
+            <div class="control-group">*@
+                <!-- Button -->
+                @*<div class="controls">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-success" onclick="return myFun();">SignUp</button>
+                </div>
+            </div>
+            <br /><br />*@
+        </form>
+      </div>
+   </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#username").change(function ()
+        {
+            var a = document.getElementById("username").value;
+            $.getJSON("/Home/CheckUsername?name=" + a, function (data) {
+
+                if (data == true)
+                {
+                    $('#username').val("");
+                    $('#available').empty();
+                    $('#available').append("Username already exists.");
+                }
+                else
+                {
+                    $('#available').empty();
+                    $('#available').append("Valid username.");
+                }
+            });
+        });
+    }
+    );
+</script> 

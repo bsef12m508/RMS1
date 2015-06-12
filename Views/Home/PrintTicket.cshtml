@@ -1,0 +1,44 @@
+﻿@model RMS.Models.ticket
+@{
+    String s = Model.train_id + ".jpg";
+}
+<div class="container" style= "margin-top:100px; width:30%; background-color:white; padding-right:15px">
+    <div class=" row">
+        <div class="col-md-12">
+            <div style="margin-left:120px" class="control-group">
+                <h1>@Model.train_title</h1>
+            </div>
+
+            <div style="margin-left:100px" class="control-group">
+                <h3>Seat no: @Model.seat_no</h3>
+            </div>
+
+            <div style="margin-left:100px" class="control-group">
+                <h3>Type: @Model.class_title</h3>
+            </div>
+            
+            <div style="margin-left:100px" class="control-group">
+                <h3>To: @ViewBag.destination</h3>
+            </div>
+
+            <div style="margin-left:100px" class="control-group">
+                <h3>From: @ViewBag.source</h3>
+            </div>
+
+            <div style="margin-left:100px" class="control-group">
+                <h3>Assigned To: @ViewBag.name</h3>
+            </div>
+
+
+            <br />
+            <div class="control-group">
+                <!-- Button -->
+                <div class="controls">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-success" style="margin-left:300px" onclick="self.location='/Home/Routes'">Print</button>
+                </div>
+                <p class="help-block">Note: Ticket price has been paid through your bank account number.</p>
+            </div>
+        </div>
+    </div>
+</div>

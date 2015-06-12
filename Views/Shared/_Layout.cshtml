@@ -1,0 +1,150 @@
+﻿<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link href="~/Scripts/bootstrap.min.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/metisMenu.min.js"></script>
+    <script src="/Scripts/sb-admin-2.js"></script>
+    <script src="/Scripts/jquery-ui.js"></script>
+    <script src="/Scripts/jquery-timepicker.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewBag.Title</title>
+    <style>
+        
+        header {
+            width: 100%;
+            position: fixed;
+        }
+
+        #index{
+            padding-right:30px;
+            height:50%;
+        }
+
+        #logo {
+            margin-left: 5%;
+        }
+
+        #option {
+            margin-left: 20%;
+            margin: 0.5%;
+        }
+       /*#logo:hover { 
+            background-color: green;
+            border-radius: 4px 4px 4px 4px;
+        }-->
+           */
+        #top-nav {
+            background-color:brown;
+        }
+        
+        /*ul#menu li a {
+            background-color: black;
+            padding: 10px 20px;
+            border-radius: 4px 4px 0 0;
+            margin: 1px;
+        }
+*/
+            ul#menu li a:hover {
+                color: black;
+            }
+
+        #sheet {
+            margin-left: 10%;
+            margin-right: 10%;
+            margin-top: 5%;
+            margin-bottom: 3%;
+            border-radius: 5px;
+            background-color: black;
+            border: 1px solid black;
+            min-height: 500px;
+        }
+
+            #sheet h2 {
+                font-weight: 600;
+                color: green;
+                margin-top: 10%;
+                margin-left: 6%;
+            }
+
+            #sheet h4 {
+                color: green;
+            }
+
+            #sheet button {
+                color: green;
+                margin-left: 8%;
+            }
+
+                #sheet button:hover {
+                    color: black;
+                    background-color: green;
+                }
+
+            #sheet p {
+                color: green;
+            }
+
+            #sheet form {
+                margin-left: 10%;
+            }
+
+        footer {
+            background-color: black;
+            color: green;
+            clear: both;
+            text-align: center;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body style="background-image:url(/images/back3.jpg)">
+    <header>
+
+        <div class="navbar-wrapper ">
+            <div class="container">
+                <nav id="top-nav" class="navbar navbar-fixed-top" role="navigation">
+                    <div class="nav navbar-header" id="logo">
+                        <a class="navbar-brand " href="/Home/Index" style="color:black;">Pakistan Railways</a>
+                    </div>
+                    <div class=" class=" collapse navbar-collapse"">
+                        <div id="option">
+                            <ul class="nav navbar-nav navbar-center" id="menu">
+                                    <li class=" active"><a href="/Home/Index" style="color:black;">Home</a></li>
+                                    <li class=" active"><a href="/Home/Routes" style="color:black;">Trains</a></li>
+                                    <li class=" active"><a href="/Home/Fares" style="color:black;">Fares</a></li>
+                                    <li class=" active"><a href="/Home/ViewTickets" style="color:black;">My Tickets</a></li>
+                                    <li class=" active"><a href="/Home/Contact" style="color:black;">Contact</a></li>
+                                    <li class=" active"><a href="/Home/About" style="color:black;">About</a></li>
+                                    @if (Session["id"] == null)
+                                    {
+                                        <li class=" active"><a href="/Home/Login" style="color:black;">SignIn</a></li>
+                                        <li class=" active"><a href="/Home/Signup" style="color:black;">SignUp</a></li>
+                                    }
+                                    @if (Session["id"] != null)
+                                    {
+
+                                        <li class=" active"><a href="/Home/Logout" style="color:black;">Logout</a></li>
+                                    }
+
+                                </ul>
+</div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    @RenderBody()
+
+    <footer class="footer navbar-fixed-bottom">
+        <div id="footer">
+            Copyright © Wasim Bajwa(BSEF12M508)
+        </div>
+    </footer>
+</body> 
+</html>

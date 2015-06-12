@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "ViewMsgs";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>ViewMsgs</h2>
+
+@model IEnumerable<RMS.Models.msg>
+
+<div class="container" style=" width:40%; background-color:white; padding-right:15px">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Messages</h3>
+            <table class="table table-bordered table-hovered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone </th>
+                        <th>Details</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model)
+                    {
+                        <tr>
+                            <td>@obj.id</td>
+                            <td>@obj.name</td>
+                            <td>@obj.email</td>
+                            <td>@obj.phno</td>
+                            <td><button class="btn btn-primary" onclick="self.location = '/Admin/MsgDetail/@obj.id'">Details</button></td>
+                            <td><button class="btn btn-danger" onclick="self.location = '/Admin/MsgDelete/@obj.id'">Delete</button></td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+@section admin{
+    <div class="container" style="margin-top:4.2%; color:chocolate; background-color:whitesmoke">
+        <h1 style="margin-left:30%">----All Messages---</h1>
+    </div>
+}

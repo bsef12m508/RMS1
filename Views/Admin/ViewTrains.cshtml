@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "ViewTrains";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    int i;
+}
+@model IEnumerable<RMS.Models.train>
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+
+
+
+<h2>ViewTrains</h2>
+<div style="background-color:white; margin-top:0%" class="container">
+    <h1>Trains: </h1>
+        <div class="control-group">
+            <div class="controls">
+                <input type="text" id="train_title" name="train_title" placeholder="Title" />
+                <button class="btn btn-success" onclick="myFun()">Search</button>
+            </div>
+        </div>
+
+    <br /><br />
+    
+    <table id="tb" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Destination</th>
+                <th>Source</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Edit</th>
+                <th>Details</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var obj in @Model)
+            {
+                <tr>
+                    <td>@obj.id</td>
+                    <td>@obj.title</td>
+                    <td>@obj.destination</td>
+                    <td>@obj.source</td>
+                    <td>@obj.date</td>
+                    <td>@obj.time</td>
+                    <td><button type="submit" class="btn btn-primary" onclick="self.location = '/Admin/TrainDetails/@obj.id ' ">Details</button></td>
+                    <td><button type="submit" class="btn btn-primary" onclick="self.location = '/Admin/EditTrain/@obj.id ' ">Edit</button></td>
+                    <td><button type="submit" class="btn btn-danger" onclick="return confirmRequest(@obj.id);">Delete</button></td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+        </div>
+
+<script>
+    function confirmRequest(x) {
+        var r = confirm("Do you really want to delete this train?");
+        if (r == true) {
+            self.location = '/Admin/DeleteTrain/' + x;
+
+        } else {
+            return false;
+        }
+    }
+
+</script>
+
+<script>
+    function myFun() {
+        var a = document.getElementById("train_title").value;
+
+        $.getJSON("/Admin/SearchTrain?title=" + a, function (data)
+        {
+            $('#tb').empty().append(data);
+        });
+    }
+</script>
+@section admin{
+    <div class="container" style="margin-top:4.2%; color:chocolate; background-color:whitesmoke">
+        <h1 style="margin-left:30%">----All Trains---</h1>
+    </div>
+}

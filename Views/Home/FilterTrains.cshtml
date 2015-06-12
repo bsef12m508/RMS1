@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "FilterTrains";
+}
+
+@model List<RMS.Models.train>
+<table id="traintable" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Train Name</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Fares</th>
+            <th>Booking</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td>@obj.id</td>
+                <td>@obj.title</td>
+                <td>@obj.destination</td>
+                <td>@obj.source</td>
+                <td>@obj.date</td>
+                <td>@obj.time</td>
+                <td><button type="submit" class="btn-btn default" onclick="self.location='/Home/SeeFares/@obj.id'">Fares</button></td>
+                <td><button type="submit" class="btn-btn default" onclick="return checkLimit(@obj.id);">Ticket</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

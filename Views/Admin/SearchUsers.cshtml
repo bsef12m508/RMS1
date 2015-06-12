@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "SearchUsers";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@model List<RMS.Models.user>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Account no</th>
+            <th>Status</th>
+            <th>Block</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+             <tr>
+                <td>@obj.id</td>
+                <td>@obj.username</td>
+                <td>@obj.email</td>
+                <td>@obj.password</td>
+                <td>@obj.account_no</td>
+                <td>@obj.status</td>
+                <td><button class="btn btn-primary" onclick="return ConfirmBlock(@obj.id)">Block/Unblock</button></td>
+                <td><button type="submit" class="btn btn-danger" onclick="return ConfirmFunction(@obj.id);">Delete</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function ConfirmFunction(a)
+        {
+            var b=confirm("Do you want to delete user.");
+            if(b==true)
+                self.location = '/Admin/DeleteUser/' + a;
+            else
+                return false;
+    }
+
+    function ConfirmBlock(a)
+    {
+        var b=confirm("Are you Sure???");
+        if(b==true)
+            self.location = '/Admin/BlockUser/' + a;
+        else
+            return false;
+    }
+
+</script>

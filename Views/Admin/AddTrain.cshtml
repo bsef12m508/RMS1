@@ -1,0 +1,219 @@
+﻿@{
+    
+    ViewBag.Title = "AddTrain";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    List<tclass> list = new List<tclass>();
+}
+@using RMS.Models;
+
+<script>
+    var train = 0;
+    var cla = 0;
+</script>
+<script>
+    $(function () {
+        $("#date").datepicker();
+        $('#time').timepicker();
+    });
+</script>
+
+<script>
+    function TrainClass()
+    {
+        if (train != 1)
+        {
+
+            $('#ctitle').text("ag");
+            alert("Firstly, add train.");
+        }
+        else
+        {
+            cla = 1;
+            var a = document.getElementById("ctitle").value;
+            var b = document.getElementById("seats").value;
+            var c = document.getElementById("price").value;
+            
+            $.getJSON('/Admin/add_class?title=' + a + '&seats=' + b + '&price=' + c, function (data) {
+                $('#added').append("==> " + a + " has been added successfully.");
+            }
+            );
+        }
+    }
+</script>
+
+<script>
+    function addimage()
+{
+        var numFiles = document.getElementById("sel").files.length;
+        if(train!=1 || cla!=1)
+        {
+            alert("Add train and class firstly.");
+            return false;
+        }
+        if (numFiles != 2)
+        {
+            alert("Pick exact 2 pics");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<script>
+    function addtrain()
+    {
+        train = 1;
+        var a = document.getElementById("ti").value;
+        var b = document.getElementById("so").value;
+        var c = document.getElementById("de").value;
+        var d = document.getElementById("da").value;
+        var e = document.getElementById("ti").value;
+        $.getJSON('/Admin/add_train?title=' + a + '&source=' + b + '&destination=' + c + '&date=' + d + '&time=' + e, function (data) {
+            $('#result').append("Train has been added successfully. <br/> Now add classes against the train.");
+        });
+    }
+</script>
+
+
+<div class="container" style="margin-top:0%; width:80%;  background-color:white">
+    <div class="row">
+        <div class="col-md-4">
+                <div id="legen">
+                    <legen class=""><h2>Add Train: </h2></legen>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="title">Title</label>
+                    <div class="controls">
+                        <input type="text" id="ti" placeholder="" class="form-control input-lg">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="destination">Destination</label>
+                    <div class="controls">
+                        <input type="text" id="de" placeholder="" class="form-control input-lg" required>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="source">Source</label>
+                    <div class="controls">
+                        <input type="text" id="so" placeholder="" class="form-control input-lg" required>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="Date">Date</label>
+                    <div class="controls">
+                        <input type="date" id="da"  placeholder="Pick Date" class="form-control input-lg" required>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="time">Time</label>
+                    <div class="controls">
+                        <input type="time" id="ti" placeholder="Pick Time" class="form-control input-lg" required>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="controls">
+                        &nbsp;&nbsp;&nbsp;&nbsp;<br />
+                        <button class="btn btn-success" onclick="addtrain();">Add Train</button>
+                    </div>
+                </div>
+            <br/>
+            <div id="result"></div>
+            <br/>
+        </div>
+
+        <div class="col-md-4">
+            <form action="/Admin/save" method="post" enctype="multipart/form-data">
+                <h2>Upload Image:</h2> 
+                <br /><input type="file" name="files[]" id="sel" multiple />
+                <input type="submit" value="upload" onclick="return addimage();" />
+            </form>
+        </div>
+
+        <div class="col-md-4">
+            <h2>Add Class</h2>
+            <div class="controls-group" id="class_div">
+                <h4>Enter Class Attributes: </h4>
+                <input type="text" placeholder="Class" class="form-control input-lg" id="ctitle" required>
+                <input type="text" placeholder="No of seats" class="form-control input-lg" id="seats" required>
+                <input type='text' placeholder='Price' class='form-control input-lg' id='price' required>
+                <button class="btn btn-success" id="addclass" onclick="TrainClass();">AddClass</button>
+            </div>
+            <div id="added">
+            </div>
+        </div>
+    </div>
+        </div>
+@section admin{
+    <div class="container" style="margin-top:4.2%; color:chocolate; background-color:whitesmoke">
+        <h1 style="margin-left:30%">----Add Train---</h1>
+    </div>
+}
+@*<script>
+    $(document).ready($('#addclass').click(function()
+    {
+        var a = document.getElementById("ctitle");
+        var b = document.getElementById("seats");
+        var c = document.getElementById("price");
+        $.getJSON('/Admin/add_class?title=' + a + '&seats=' + b + '&price=' + c, function(data) {
+            alert("Class has been added successfully.");
+        }
+       );
+    }
+
+        ));
+</script>*@
+
+
+@*<script>
+
+   function AddClass()
+   {
+       var a = document.getElementById("class_title").value;
+       var b = document.getElementById("class_seats").value;
+       var c = document.getElementById("class_price").value;
+
+       var obj = new TrainClass(a, b, c);
+       arr[arr.length] = obj;
+       $("#class_div").empty();
+       $('#class_label').append("<br/><br/><label class='control-label'>Class:</label>");
+       $('#class_label').append("<label class='control-label'>" + a + "</label><br/>");
+       $('#class_label').append("<label class='control-label'>" + b + "</label><br/>");
+       $('#class_label').append("<label class='control-label'>" + c + "</label><br/>");
+       alert("saofv");
+
+        $('#class_div').append("<br/><br/>");
+        $('#class_div').append("<label>Enter Class Attributes</Label>")
+        $('#class_div').append('<input type="text" placeholder="Class" class="form-control input-lg"  id="class_title">');
+        $('#class_div').append('<input type="text" placeholder="No of seats" class="form-control input-lg" id="class_seats" >');
+        $('#class_div').append("<input type='text' placeholder='Price' class='form-control input-lg' id='class_price'>");
+        $('#class_div').append('<button class="btn btn-success" onclick="AddClass()">Click Here</button>');
+   }
+
+  
+</script>
+
+<script>
+    function confirm()
+    {
+        $.ajax({
+            contentType:'application/json; charset-utf-8',
+            dataType:'json',
+            type:'POST',
+            url: '/Admin/add_train',
+            async:true,
+            processData: false,
+            cache:false,
+            data: JSON.stringify({ClassArr:arr}),
+            success: function () { alert("Added."); },
+            error: function () {alert("Error.") }
+       });
+    }
+
+</script>*@

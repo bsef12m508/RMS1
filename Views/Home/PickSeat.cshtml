@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "PickSeat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+   
+}
+@model List<int>
+<div class="container" style="margin-top:4%;  width:40%; background-color:white; padding-right:15px">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Pick Seat: </h2>
+            @for (int i = 0, count=1; i < ViewBag.seats; i = i + 5)
+            {
+                <div class="Row1">
+                    <div>
+                        @for (int j = i; j < ViewBag.seats && j<i+5; j++)
+                        {
+                            count++;
+                        if (Model.Contains(j + 1))
+                        {
+                        <button disabled style="width:40px; height:40px; margin:5px" class="btn btn-danger" >@(j + 1)</button>
+                        }
+                        else
+                        {
+                            <button onclick="return ConfirmBlock(@(j+1),@ViewBag.train_id,@ViewBag.class_id);" style="width:40px; height:40px; margin:5px" class="btn btn-success">@(j + 1)</button>
+                        }
+                        }
+                      </div>
+                </div>
+            }
+g
+        </div>
+    </div>
+    <h3>Note:</h3>
+    <p>1: You can book only one ticket at a time.</p>
+    <p>2: Only green coloured seats are available.</p>
+    </div>
+
+<script>
+    function ConfirmBlock(a,b,c) {
+        var b = confirm("Price will be paid through bank account number. Are you Sure?");
+        if (b == true)
+            self.location ='/Home/BookTicket/?seat='+a+'&train_id='+@ViewBag.train_id+'&class_id='+c;
+        else
+            return false;
+    }
+</script>
+
+

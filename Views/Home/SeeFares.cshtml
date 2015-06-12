@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "SeeFares";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<RMS.Models.tclass>
+<div class="container" style="margin-top:50px; width:40%; background-color:white; padding-right:15px">
+    <div class=" row">
+        <div class="col-md-12">
+
+                    <div id="legen">
+                        <legen class=""><h2>Fares</h2></legen>
+                    </div>
+
+            @if(ViewBag.available==true)
+            {
+                    <div class="control-group">
+                        <label class="control-label" for="Name">Train ID:&nbsp;</label>
+                            <label class="control-label" for="Name">@ViewBag.train.id</label>
+                    </div>
+
+            <div class="control-group">
+                <label class="control-label" >Title:&nbsp;</label>
+                <label class="control-label" >@ViewBag.train.title</label>
+            </div>
+                   
+            <div class="control-group">
+                <label class="control-label">Date:&nbsp;</label>
+                <label class="control-label">@ViewBag.train.date</label>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Time:&nbsp;</label>
+                <label class="control-label">@ViewBag.train.time</label>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Source:&nbsp;</label>
+                <label class="control-label">@ViewBag.train.source</label>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Destination:&nbsp;</label>
+                <label class="control-label">@ViewBag.train.destination</label>
+            </div>
+
+            <table class="table table-bordered table-hovered">
+                <thead>
+                    <tr>
+                        <th>Class Title</th>
+                        <th>Seats</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model)
+                    {
+                        <tr>
+                            <td>@obj.title</td>
+                            <td>@obj.seats</td>
+                            <td>@obj.price</td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+            }
+            else
+            {
+                <div class="control-group">
+                    <h4>Invalid Train Id.</h4>
+                </div>
+            }
+            <div class="control-group">
+                        <!-- Button -->
+                        <div class="controls">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-success" onclick="self.location='/Home/Fares'">Back</button>
+                        </div>
+                    </div>
+                    <br /><br />
+        </div>
+    </div>
+</div>

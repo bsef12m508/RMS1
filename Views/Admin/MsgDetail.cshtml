@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "ViewMsg";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+@using RMS.Models;
+<h2>ViewMsg</h2>
+<div class="container" style="margin-top:0%; width:40%; background-color:white; padding-right:15px">
+    <div class=" row">
+        <div class="col-md-12">
+
+   
+                    <div id="legen">
+                        <legen class=""><h2>Contact Us</h2></legen>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="Name">ID: </label>
+                        <label class="control-label" for="Name">@Model.id</label>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="Name">Name: </label>
+                        <label class="control-label" for="Name">@Model.name</label>
+                        </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="Name">Email: </label>
+                        <label class="control-label" for="Name">@Model.email</label>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="Name">Phone no: </label>
+                        <label class="control-label" for="Name">@Model.phno</label>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="Name">Message: </label>
+                        <label class="control-label" for="Name">@Model.message</label>
+                    </div>
+
+               <div class="control-group">
+                   <button class="btn btn-success" onclick="self.location='/Admin/ViewMsgs'">Back</button>
+               </div>
+                    <br />
+
+                    <br /><br />
+
+        </div>
+    </div>
+</div>
+@section admin{
+    <div class="container" style="margin-top:4.2%; color:chocolate; background-color:whitesmoke">
+        <h1 style="margin-left:30%">----Message Detail---</h1>
+    </div>
+}

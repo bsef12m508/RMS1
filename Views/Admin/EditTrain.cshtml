@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "EditTrain";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+ @model RMS.Models.train
+ 
+<script>
+    $(function () {
+        $("#date").datepicker();
+        $('#time').timepicker();
+    });
+</script>
+
+<div class="container" style="margin-top:45px; width:40%;  background-color:white">
+    <div class="row">
+        <div class="col-md-12">
+           @using(Html.BeginForm("EditTrainFun","Admin",FormMethod.Post))
+           { 
+                <fieldset>
+                    <div id="legen">
+                        <legen class=""><h2>Edit Train: </h2></legen>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.Label("Id")
+                        <div class="controls">
+                            @Html.HiddenFor(Model=>Model.id)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.Label("Title: ")
+                        <div class="controls">
+                            @Html.EditorFor(Model => Model.title)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.Label("Destination: ")
+                        <div class="controls">
+                            @Html.EditorFor(Model=>Model.destination)
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        @Html.Label("Source:")
+                        <div class="controls">
+                            @Html.EditorFor(Model=>Model.source)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.Label("Date:")
+                        <div class="controls">
+                            @Html.EditorFor(Model => Model.date)
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        @Html.Label("Time:")
+                        <div class="controls">
+                            @Html.EditorFor(Model => Model.time)
+                        </div>
+                        <p>Remember: You can not edit classes of trians.</p>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Button -->
+                        <div class="controls">
+                            &nbsp;&nbsp;&nbsp;&nbsp;<br />
+                            <button class="btn btn-success">Add</button>
+                        </div>
+                        <br /><br />
+                    </div>
+                    
+                </fieldset>
+           }
+        </div>
+    </div>
+</div>
+
