@@ -10,18 +10,8 @@
                 </div>
 
         <form action="sign_up" method="post">
-            @Html.ValidationSummary(true)
-            @Html.EditorFor(x=>x.username)
-            @Html.ValidationMessageFor(x=>x.username)
-            @Html.EditorFor(x=>x.password)
-            @Html.ValidationMessageFor(x => x.password)
-            @Html.EditorFor(x => x.email)
-            @Html.ValidationMessageFor(x => x.email)
-            @Html.EditorFor(x => x.account_no)
-            @Html.ValidationMessageFor(x => x.account_no)
-            <input type="submit" />
 
-            @*<div class="control-group">
+            <div class="control-group">
                 <label class="control-label" for="username">Username</label>
                 <div class="controls">
                     <input type="text" id="username" name="username" placeholder="" class="form-control input-lg" required>
@@ -39,10 +29,10 @@
 
             <div class="control-group">
                 <label class="control-label" for="password">Password</label>
-                <div class="controls">*@
+                <div class="controls">
                     @*@Html.TextBoxFor(m=>m.password)
                     @Html.ValidationMessageFor()*@
-                    @*<input type="password" id="password" name="password" placeholder="" class="form-control input-lg" required>
+                    <input type="password" id="password" name="password" placeholder="" class="form-control input-lg" required>
                     <p class="help-block">Password should be at least 6 characters</p>
                 </div>
             </div>
@@ -63,14 +53,14 @@
             </div>
 
             <br />
-            <div class="control-group">*@
+            <div class="control-group">
                 <!-- Button -->
-                @*<div class="controls">
+                <div class="controls">
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <button class="btn btn-success" onclick="return myFun();">SignUp</button>
                 </div>
             </div>
-            <br /><br />*@
+            <br /><br />
         </form>
       </div>
    </div>
