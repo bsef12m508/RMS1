@@ -34,7 +34,7 @@
             var c = document.getElementById("price").value;
             
             $.getJSON('/Admin/add_class?title=' + a + '&seats=' + b + '&price=' + c, function (data) {
-                $('#added').append("==> " + a + " has been added successfully.");
+                $('#added').append("==> " + a + " has been added successfully.<br/>");
             }
             );
         }
@@ -67,7 +67,7 @@
         var b = document.getElementById("so").value;
         var c = document.getElementById("de").value;
         var d = document.getElementById("da").value;
-        var e = document.getElementById("ti").value;
+        var e = document.getElementById("tim").value;
         $.getJSON('/Admin/add_train?title=' + a + '&source=' + b + '&destination=' + c + '&date=' + d + '&time=' + e, function (data) {
             $('#result').append("Train has been added successfully. <br/> Now add classes against the train.");
         });
@@ -75,7 +75,7 @@
 </script>
 
 
-<div class="container" style="margin-top:0%; width:80%;  background-color:white">
+<div class="container" style="margin-top:0%; width:80%; margin-bottom:3%; background-color:white">
     <div class="row">
         <div class="col-md-4">
                 <div id="legen">
@@ -113,7 +113,7 @@
                 <div class="control-group">
                     <label class="control-label" for="time">Time</label>
                     <div class="controls">
-                        <input type="time" id="ti" placeholder="Pick Time" class="form-control input-lg" required>
+                        <input type="time" id="tim" placeholder="Pick Time" class="form-control input-lg" required>
                     </div>
                 </div>
 

@@ -117,7 +117,6 @@
                                     <li class=" active"><a href="/Home/Index" style="color:black;">Home</a></li>
                                     <li class=" active"><a href="/Home/Routes" style="color:black;">Trains</a></li>
                                     <li class=" active"><a href="/Home/Fares" style="color:black;">Fares</a></li>
-                                    <li class=" active"><a href="/Home/ViewTickets" style="color:black;">My Tickets</a></li>
                                     <li class=" active"><a href="/Home/Contact" style="color:black;">Contact</a></li>
                                     <li class=" active"><a href="/Home/About" style="color:black;">About</a></li>
                                     @if (Session["id"] == null)
@@ -127,7 +126,7 @@
                                     }
                                     @if (Session["id"] != null)
                                     {
-
+                                        <li class=" active"><a href="/Home/ViewTickets" style="color:black;">My Tickets</a></li>
                                         <li class=" active"><a href="/Home/Logout" style="color:black;">Logout</a></li>
                                     }
 
